@@ -187,7 +187,7 @@ function uploadImage(req, res){
 }
 
 function removeFilesOfUpoload(res, file_path, message){
-    console.log('removeFilesOfUpoload');
+    //console.log('removeFilesOfUpoload');
     fs.unlink(file_path, (err) => {
         return res.status(202).send({message: message});
         

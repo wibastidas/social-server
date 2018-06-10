@@ -51,7 +51,7 @@ function saveUser(req, res){
                 //if(users && users.length >= 1){
                 //Me daba error undefined el .length
                 if(users){
-                    console.log('ya hay usuario');
+                    //console.log('ya hay usuario');
                     return res.status(200).send({message: 'El usuario que intenta registrar ya existe' });
                 } else {
                     //Ciframos la password y guardamos los datos
@@ -139,7 +139,7 @@ async function followThisUser(identity_user_id, user_id){
     try {
         var following = await Follow.findOne({ user: identity_user_id, followed: user_id}).exec()
             .then((following) => {
-                console.log(following);
+                //log(following);
                 return following;
             })
             .catch((err)=>{
@@ -147,7 +147,7 @@ async function followThisUser(identity_user_id, user_id){
             });
         var followed = await Follow.findOne({ user: user_id, followed: identity_user_id}).exec()
             .then((followed) => {
-                console.log(followed);
+                //console.log(followed);
                 return followed;
             })
             .catch((err)=>{
@@ -319,17 +319,17 @@ function uploadImage(req, res){
     
     if(req.files){
         var file_path = req.files.image.path;
-        console.log(file_path);
+        //console.log(file_path);
 
         var file_split = file_path.split('\/');
-        console.log(file_split);
+        //console.log(file_split);
 
         var file_name = file_split[2];
-        console.log(file_name);
+        //console.log(file_name);
         
         var ext_split = file_name.split('\.');
         var file_ext = ext_split[1];
-        console.log(file_ext);
+        //console.log(file_ext);
 
         if(userId != req.user.sub){
             return removeFilesOfUpoload(res, file_path, 'No tiene permiso para actualizar los datos del usuario');
@@ -354,7 +354,6 @@ function uploadImage(req, res){
 }
 
 function removeFilesOfUpoload(res, file_path, message){
-    console.log('removeFilesOfUpoload');
     fs.unlink(file_path, (err) => {
         return res.status(202).send({message: message});
         
