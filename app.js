@@ -20,8 +20,10 @@ var message_routes = require('./routes/message');
 //cargar middlewares
 //un metodo que se ejecuta antes que llegue a un controlador
 //Configuramos bodyParser para que convierta el body de nuestras peticiones a JSON
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({extended:false}));
+//app.use(bodyParser.json());
+app.use (bodyParser.json ({limit: '50mb'})); 
+app.use (bodyParser.urlencoded ({limit: '50mb', extended: true}));
 
 //cors
 // configurar cabeceras http

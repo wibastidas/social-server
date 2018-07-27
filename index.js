@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/curso_mea
     
         // CREAR EL SERVIDOR WEB CON NODEJS
         app.listen(port, () => {
-            console.log("servidor corriendo en http://192.168.1.47:3800");
+            console.log("servidor corriendo en http://localhost:3800/api/");
         });
     })
     // Si no se conecta correctamente mostramos el error
